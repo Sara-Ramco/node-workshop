@@ -1,5 +1,5 @@
 ---
-title: Node.js
+title: Node.js and webservers
 separator: \n---\n
 verticalSeparator: \n...\n
 theme: solarized
@@ -8,6 +8,7 @@ revealOptions:
 ---
 
 # Node.js
+and Webservers
 
 ---
 
@@ -24,26 +25,25 @@ Note: Similar to other interpreted languages eg. Python
 
 ## Why?
 ...
-Javascript is simple and C-like
+### Javascript is simple and C-like
 
 Easy to pickup, familiar to anyone who has learnt a C family language
 ...
-Javascript is flexible and can fit multiple paradigms eg. functional, object-oriented programming (OOP)
+### Javascript is flexible
+
+Fits multiple paradigms eg. functional, object-oriented programming (OOP)
 ...
-Largest amount of packages
-> ![module-counts.png](./img/module-counts.png)
-> <sup>[http://www.modulecounts.com/](http://www.modulecounts.com/)</sup>
+### Largest amount of packages
+![module-counts.png](img/module-counts.png)
+<sup>[http://www.modulecounts.com/](http://www.modulecounts.com/)</sup>
 Note: Speed of development
 ...
-Highly scalable* event model with I/O requests delegated to system level
+### Highly scalable*
+
+Asynchronous evented model with I/O requests delegated to system level
 
 <sup>\*Terms and conditions apply *(topic for another day)*</sup>
 
----
-
-## How?
-...
-//TODO: Comparison of frameworks
 ---
 
 ## Useful resources
@@ -55,8 +55,39 @@ Highly scalable* event model with I/O requests delegated to system level
 ---
 
 ## Koa
+...
+### Lightweight web framework
 
-//TODO: Intro to Koa
+Bring your own plugins
+...
+### Hello World
+
+<pre><code data-trim data-noescape>
+    const Koa = require('koa');
+    const app = new Koa();
+
+    app.use(async ctx => {
+        ctx.body = 'Hello World';
+    });
+
+    app.listen(3000);
+
+    // Any call to http://localhost:3000 will return Hello World
+</code></pre>
+
+
+<sup>https://koajs.com/#application</sup>
+
+...
+### Middleware
+
+* A function through which a request and corresponding response will flow through
+* Registered to Koa in a middleware stack with `app.use`
+* Control handed to next middleware in stack with `await next()`
+...
+### Middleware
+![middleware.png](img/middleware.png)
+<sup>https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/index?view=aspnetcore-2.1</sup>
 
 ---
 
@@ -68,8 +99,8 @@ Clone or copy the files from here
 Install Node.js version >= 7.6.0
 ...
 <pre><code data-trim data-noescape>
-npm init
-npm install koa koa-route koa-bodyparser
+    npm init
+    npm install koa koa-route koa-bodyparser
 </code></pre>
 ...
 #### `package.json`
@@ -78,5 +109,9 @@ npm install koa koa-route koa-bodyparser
 
 1. <p class="fragment">Add a route for POST /api/user/:id and save request body to a global array in memory</p>
 2. <p class="fragment">Add a route for GET /api/user/:id and return the saved request body</p>
-3. <p class="fragment">Add a X-Response-Time header with the time taken from request received to response sent</p>
+3. <p class="fragment">Add `console.log` for request and response with the same randomly-generated correlation id for each log statement</p>
 4. <p class="fragment">Return HTTP 400 if X-Api-Key in request header !== 'secretKey', 500 for any other errors</p>
+
+---
+
+# Fin
