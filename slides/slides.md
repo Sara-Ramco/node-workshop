@@ -100,6 +100,7 @@ Clone with git or copy the files from
 https://github.com/ksami/node-workshop
 ...
 <pre><code data-trim data-noescape>
+    cd src
     npm install
     node index.js
 </code></pre>
