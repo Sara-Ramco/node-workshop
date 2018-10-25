@@ -93,23 +93,24 @@ Bring your own plugins
 
 ## Hands-on
 ...
-Clone or copy the files from here
-//TODO: Skeleton repo
-...
 Install Node.js version >= 7.6.0
 ...
+Clone with git or copy the files from
+
+https://github.com/ksami/node-workshop
+...
 <pre><code data-trim data-noescape>
-    npm init
-    npm install koa koa-route koa-bodyparser
+    npm install
+    node index.js
 </code></pre>
 ...
 #### `package.json`
 [NPM metadata for your project](https://docs.npmjs.com/files/package.json)
 ...
 
-1. <p class="fragment">Add a route for POST /api/user/:id and save request body to a global array in memory</p>
-2. <p class="fragment">Add a route for GET /api/user/:id and return the saved request body</p>
-3. <p class="fragment">Add `console.log` for request and response with the same randomly-generated correlation id for each log statement</p>
+1. <p class="fragment">Add a route for POST /api/user/:id and save request body to `database`</p>
+2. <p class="fragment">Add a route for GET /api/user/:id and return the saved request body from `database`</p>
+3. <p class="fragment">Add logs for request and response with the same randomly-generated correlation id for each log statement</p>
 4. <p class="fragment">Return HTTP 400 if X-Api-Key in request header !== 'secretKey', 500 for any other errors</p>
 
 ---
