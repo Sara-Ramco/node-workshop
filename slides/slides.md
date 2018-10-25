@@ -66,7 +66,7 @@ Bring your own plugins
     const Koa = require('koa');
     const app = new Koa();
 
-    app.use(async ctx => {
+    app.use(async (ctx, next) => {
         ctx.body = 'Hello World';
     });
 
@@ -88,6 +88,20 @@ Bring your own plugins
 ### Middleware
 ![middleware.png](img/middleware.png)
 <sup>https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/index?view=aspnetcore-2.1</sup>
+...
+### Simple routing
+<pre><code data-trim data-noescape>
+    const timeController = async (ctx, next) => {
+        if (ctx.request.method === 'GET' &&
+            ctx.request.path === '/time') {
+            return new Date().toISOString();
+        } else {
+            await next();
+        }
+    };
+
+    app.use(timeController);
+</code></pre>
 
 ---
 
