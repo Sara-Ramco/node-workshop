@@ -59,6 +59,7 @@ Asynchronous evented model with I/O requests delegated to system level
 ### Lightweight web framework
 
 Bring your own plugins
+Note: Flexibility, freedom of choice, no need to bundle irrelevant packages
 ...
 ### Hello World
 
@@ -84,6 +85,7 @@ Bring your own plugins
 * A function through which a request and corresponding response will flow through
 * Registered to Koa in a middleware stack with `app.use`
 * Control handed to next middleware in stack with `await next()`
+* Context `ctx` for a request passed through the middleware stack
 ...
 ### Middleware
 ![middleware.png](img/middleware.png)
